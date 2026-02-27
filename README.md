@@ -92,7 +92,7 @@ http://127.0.0.1:5000
 
 ## 📸 Screenshot
 
-![Spam Detection Screenshot](screenshot.png)
+![Spam Detection Screenshot](spamdetection.png)
 
 ---
 
