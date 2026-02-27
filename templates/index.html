@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spam Detector</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Spam Detection</h1>
+
+<input id="msg" placeholder="Enter message">
+
+<button onclick="check()">Check</button>
+
+<div id="resultBox" class="result">Result appears here</div>
+
+</div>
+
+<script>
+function check(){
+let msg=document.getElementById("msg").value
+
+fetch("/predict",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({message:msg})
+})
+.then(res=>res.json())
+.then(data=>{
+
+let box=document.getElementById("resultBox")
+
+box.classList.remove("show")
+
+setTimeout(()=>{
+box.innerHTML=data.toUpperCase()
+box.classList.add("show")
+},100)
+
+document.getElementById("msg").value=""
+
+})
+}
+</script>
+
+</body>
+</html>
